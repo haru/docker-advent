@@ -1,9 +1,15 @@
 #!/bin/sh
 set -e
 
+KEYBASE_FILE=/usr/local/keybase
+
 if [ "$SECRET_KEY_BASE" = "" ]
 then
-  export SECRET_KEY_BASE=`rake secret`
+  if [ ! -f $KEYBASE_FILE ]
+  then
+    rake secret > $KEYBASE_FILE
+  fi
+  export SECRET_KEY_BASE=`cat $KEYBASE_FILE`
 fi
 
 mkdir -p /var/radvent_data/uploads
