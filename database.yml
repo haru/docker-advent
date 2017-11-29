@@ -22,4 +22,4 @@ test:
 
 production:
   <<: *default
-  database: /usr/local/radvent_data/radvent.sqlite3
+  database: /var/radvent_data/radvent.sqlite3
