@@ -6,7 +6,8 @@ then
   export SECRET_KEY_BASE=`rake secret`
 fi
 
-mkdir -p /usr/local/radvent_data/uploads
+mkdir -p /var/radvent_data/uploads
 
+rm -f /usr/local/radvent/tmp/pids/server.pid
 bundle exec rake db:migrate RAILS_ENV=production
 bundle exec rails s -e production

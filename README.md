@@ -7,12 +7,12 @@ https://github.com/haru/radvent
 ## Start container with docker command
 
 ```
-$ docker run -d -p 3000:3000 -v /tmp/data:/usr/local/radvent_data haru/radvent
+$ docker run -d -p 3000:3000 -v /tmp/data:/var/radvent_data haru/radvent
 ```
 
 ## docker-compose.yml sample
 
-```
+```yaml
 version: '2'
 services:
   radvent:
@@ -20,5 +20,5 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - "$PWD/data:/usr/local/radvent_data"
+      - "$PWD/data:/var/radvent_data"
 ```

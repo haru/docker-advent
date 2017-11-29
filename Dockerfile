@@ -3,7 +3,7 @@ LABEL maintainer="Haruyuki Iida"
 
 RUN mkdir -p /usr/local
 
-RUN git clone https://github.com/haru/radvent.git /usr/local/radvent
+RUN git clone https://github.com/haru/radvent.git -b 2.0b2 /usr/local/radvent
 WORKDIR /usr/local/radvent
 
 RUN bundle install --without test development
@@ -16,9 +16,9 @@ RUN bundle exec rake radvent:generate_default_settings
 RUN bundle exec rake assets:clean && bundle exec rake assets:precompile
 COPY run.sh /usr/local/bin/run.sh
 COPY database.yml /usr/local/radvent/config/
-RUN mkdir -p /usr/local/radvent_data/uploads
+RUN mkdir -p /var/radvent_data/uploads
 RUN rm -f /usr/local/radvent/public/uploads
-RUN ln -s /usr/local/radvent_data/uploads /usr/local/radvent/public/uploads
+RUN ln -s /var/radvent_data/uploads /usr/local/radvent/public/uploads
 
 EXPOSE 3000
 
