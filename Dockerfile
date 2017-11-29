@@ -15,6 +15,8 @@ RUN apt-get update \
 RUN bundle exec rake radvent:generate_default_settings
 RUN bundle exec rake assets:clean && bundle exec rake assets:precompile
 COPY run.sh /usr/local/bin/run.sh
+COPY database.yml /usr/local/radvent/config/
+RUN mkdir -p /usr/local/radvent_data
 
 EXPOSE 3000
 
