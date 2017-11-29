@@ -14,7 +14,8 @@ RUN apt-get update \
 
 RUN bundle exec rake radvent:generate_default_settings
 RUN bundle exec rake assets:clean && bundle exec rake assets:precompile
+COPY run.sh /usr/local/bin/run.sh
 
 EXPOSE 3000
 
-CMD bundle exec rake db:migrate && bundle exec rails s start -e production
+CMD sh -x /usr/local/bin/run.sh
